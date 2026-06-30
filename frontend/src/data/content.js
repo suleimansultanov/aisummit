@@ -37,7 +37,7 @@ export const SPONSORS = ["TU-Sofia", "iNNOBIZ1", "VirTech"];
 export const LECTURES = [
   {
     no: "01",
-    speaker: "Dr. Michael Wu",
+    speaker: "Dr. Ethan Calloway",
     length: "~ 90 min",
     title: "Mastering LLMs Within the Enterprise: From Theory to Practice",
     focus:
@@ -47,7 +47,7 @@ export const LECTURES = [
   },
   {
     no: "02",
-    speaker: "Dr. Michael Wu",
+    speaker: "Dr. Ethan Calloway",
     length: "~ 90 min",
     title: "The Agentic Era: The Bridge from Dumb LLMs to Artificial Super-Intelligence",
     focus:
@@ -60,28 +60,28 @@ export const LECTURES = [
 // Photos are editorial placeholders — replace with official speaker portraits.
 export const SPEAKERS = [
   {
-    name: "Dr. Michael Wu",
+    name: "Dr. Ethan Calloway",
     role: "Silicon Valley AI Expert · Guest Lecturer",
     image:
       "https://images.unsplash.com/photo-1600878459138-e1123b37cb30?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
     bio: "Michael is a globally recognized authority on artificial intelligence, large language models, and the path toward AGI. Drawing on years at the frontier of Silicon Valley, he translates the inner workings of generative AI into practical strategy for enterprise leaders — covering everything from safe internal GenAI adoption to the emerging agentic era and its profound business and societal implications.",
   },
   {
-    name: "Alexander I. Iliev, PhD",
+    name: "Dr. Sofia Marchetti, PhD",
     role: "Scholar · AI/ML, Smart Systems, Signal Processing",
     image:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
     bio: "Alex is an eminent scholar in AI/ML, Smart Systems, Signal Processing, and Emotion Recognition. He is affiliated with the Institute of Mathematics and Informatics (Bulgarian Academy of Sciences), SRH Berlin University as Academic Head of Big Data and AI, and UC Berkeley as a Lead Lecturer. A Co-Founder of Innovatia Valley, he has worked across Gracenote, Labcyte, and Stealth Media Labs, and contributed to Horizon Europe HealthyW8, H2020 ACTIVAGE, Cross4Health, and WE-TRANSFORM.",
   },
   {
-    name: "Prof. Dr. Eng. Georgi Todorov",
+    name: "Prof. Dr. Eng. Lukas Brandt",
     role: "Dean, Faculty of Industrial Technology · TU-Sofia",
     image:
       "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
     bio: "Georgi is a prominent Bulgarian engineer and academic leader holding master's degrees in Mechanical Engineering and Applied Mathematics from TU-Sofia, where he is Professor and Doctor of Science. He has served as Dean of the Faculty of Mechanical Engineering and Technology and now leads the Faculty of Industrial Technology and a Centre of Excellence at TU-Sofia. He holds 7 international patents plus 19 registered in Bulgaria and has lectured in Chile and China.",
   },
   {
-    name: "Roumen Nikolov, PhD",
+    name: "Dr. Amara Okafor, PhD",
     role: "CEO of Virtech · Former UNESCO Chairholder",
     image:
       "https://images.unsplash.com/photo-1582750433449-648ed127bb54?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
@@ -96,7 +96,7 @@ export const AGENDA = [
   {
     time: "09:30",
     title: "Mastering LLMs Within the Enterprise: From Theory to Practice",
-    note: "Keynote · Dr. Michael Wu · ~90 min",
+    note: "Keynote · Dr. Ethan Calloway · ~90 min",
   },
   { time: "11:00", title: "Networking Break", note: "Coffee & connections" },
   { time: "11:30", title: "Panel: Shaping the Intelligent Enterprise", note: "Leaders & innovators" },
@@ -104,7 +104,7 @@ export const AGENDA = [
   {
     time: "14:00",
     title: "The Agentic Era: From LLMs to Artificial Super-Intelligence",
-    note: "Keynote · Dr. Michael Wu · ~90 min",
+    note: "Keynote · Dr. Ethan Calloway · ~90 min",
   },
   { time: "15:30", title: "Coffee & Connect", note: "" },
   { time: "16:00", title: "Fireside Chat with the Speakers", note: "Open Q&A" },
