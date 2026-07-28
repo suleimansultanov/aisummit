@@ -8,18 +8,28 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'serif'],
+        display: ['"Clash Display"', '"Cabinet Grotesk"', 'sans-serif'],
+        heading: ['"Clash Display"', '"Cabinet Grotesk"', 'sans-serif'],
         sub: ['"Cabinet Grotesk"', 'sans-serif'],
         body: ['"Outfit"', 'sans-serif'],
       },
       colors: {
-        bg: '#F8F8F6',
+        bg: {
+          DEFAULT: '#FFF8F3',
+          deep: '#FFEFE4',
+        },
         surface: '#FFFFFF',
         ink: {
-          DEFAULT: '#0A0A0A',
-          soft: '#5C5C5C',
+          DEFAULT: '#17101F',
+          soft: '#6C5F78',
         },
-        line: '#E5E5E5',
+        line: '#F0DFD2',
+        brand: {
+          orange: '#FF7A18',
+          pink: '#FF2D78',
+          violet: '#A729F5',
+          cyan: '#14C8C8',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
