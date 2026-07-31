@@ -25,7 +25,7 @@ export const LogoTile = ({ item, testId }) => {
           src={item.logo}
           alt={item.full}
           onError={() => setBroken(true)}
-          className="max-h-12 w-auto object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
+          className="max-h-16 w-auto max-w-full object-contain opacity-75 transition-all duration-300 group-hover:opacity-100"
           style={{ filter: "saturate(.6)" }}
         />
       ) : (

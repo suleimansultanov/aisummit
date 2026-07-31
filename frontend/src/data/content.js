@@ -14,9 +14,10 @@ export const ASSETS = {
   logoFooter: `${OLD_SITE}/img/footer-logo.png`,
   member: (n) => `${OLD_SITE}/img/team-member/member-${n}.jpg`,
   imiLogo: `${OLD_SITE}/imi_logo.png`,
-  // Save the Sofia University crest here and the sponsor tile picks it up
-  // automatically. Until then it renders as a styled wordmark.
-  suLogo: `${process.env.PUBLIC_URL || ""}/img/logos/sofia-university.png`,
+  // Locally hosted assets. PUBLIC_URL keeps these correct under the /aisummit
+  // base path on GitHub Pages as well as at the root in dev.
+  krasenStefanov: `${process.env.PUBLIC_URL || ""}/img/speakers/krasen-stefanov.jpg`,
+  suLogo: `${process.env.PUBLIC_URL || ""}/img/logos/sofia-university.jpg`,
 };
 
 export const EVENT = {
@@ -146,9 +147,7 @@ export const FEATURED_SPEAKERS = [
     role: 'Head of Department of Information Technologies · Sofia University "St. Kliment Ohridski"',
     tag: "Featured Keynote",
     accent: "violet",
-    // No official portrait available yet — the Avatar component falls back to
-    // gradient initials until one is supplied.
-    image: null,
+    image: ASSETS.krasenStefanov,
     linkedin: "https://www.fmi.uni-sofia.bg/en/faculty/krasen-stefanov-stefanov",
     bio:
       'Krasen Stefanov is Professor and Head of the Department of Information Technologies at the Faculty of Mathematics and Informatics, Sofia University "St. Kliment Ohridski", where he also heads the Information Services Laboratory. He is the coordinator and director of UNITe — the Centre of Excellence for Big Data, Artificial Intelligence and High-Performance Computing, whose new research complex opened at the Lozenets Campus in December 2023. His research spans big data, artificial intelligence, high-performance computing, the Internet of Things, competency-based education and technology-enhanced learning, and he has led and contributed to a long series of European and national research projects across e-learning systems, knowledge management and digital libraries.',
