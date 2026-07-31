@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/aisummit/static/css/main.e9a980d4.css",
-    "main.js": "/aisummit/static/js/main.947cd19e.js",
+    "main.css": "/aisummit/static/css/main.b92f4aa1.css",
+    "main.js": "/aisummit/static/js/main.d204b7b6.js",
     "index.html": "/aisummit/index.html",
-    "main.e9a980d4.css.map": "/aisummit/static/css/main.e9a980d4.css.map",
-    "main.947cd19e.js.map": "/aisummit/static/js/main.947cd19e.js.map"
+    "main.b92f4aa1.css.map": "/aisummit/static/css/main.b92f4aa1.css.map",
+    "main.d204b7b6.js.map": "/aisummit/static/js/main.d204b7b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9a980d4.css",
-    "static/js/main.947cd19e.js"
+    "static/css/main.b92f4aa1.css",
+    "static/js/main.d204b7b6.js"
   ]
 }
