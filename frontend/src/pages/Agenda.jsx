@@ -6,10 +6,10 @@ import Marquee from "../components/Marquee";
 import { AGENDA, EVENT } from "../data/content";
 
 const KINDS = {
-  keynote: { label: "Keynote", colour: "#FF2D78", Icon: Star },
-  talk: { label: "Session", colour: "#A729F5", Icon: Mic },
-  panel: { label: "Panel", colour: "#FF7A18", Icon: Users },
-  break: { label: "Break", colour: "#14C8C8", Icon: Coffee },
+  keynote: { label: "Keynote", colour: "#7C4DFF", Icon: Star },
+  talk: { label: "Session", colour: "#3B4FD8", Icon: Mic },
+  panel: { label: "Panel", colour: "#FF8A3D", Icon: Users },
+  break: { label: "Break", colour: "#14B8B8", Icon: Coffee },
   admin: { label: "Programme", colour: "#6C5F78", Icon: Info },
 };
 
@@ -28,13 +28,13 @@ export default function Agenda() {
     <div data-testid="agenda-page" className="pt-[100px]">
       {/* HEADER */}
       <section className="relative overflow-hidden">
-        <div className="blob -left-24 -top-16 h-96 w-96" style={{ background: "#FF7A18" }} />
-        <div className="blob right-0 top-10 h-96 w-96" style={{ background: "#A729F5", opacity: 0.35 }} />
+        <div className="blob -left-24 -top-16 h-96 w-96" style={{ background: "#FF8A3D" }} />
+        <div className="blob right-0 top-10 h-96 w-96" style={{ background: "#3B4FD8", opacity: 0.35 }} />
         <div className="dot-grid absolute inset-0 opacity-40" />
 
         <div className="relative mx-auto max-w-[1400px] px-6 pb-12 pt-16 md:px-12 md:pt-20 lg:px-16">
           <Reveal>
-            <p className="mb-6 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-orange">
+            <p className="mb-6 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-amber">
               Event Programme
             </p>
           </Reveal>
@@ -43,7 +43,7 @@ export default function Agenda() {
               <h1 className="font-display text-5xl font-semibold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
                 One day.
                 <br />
-                <span className="grad-text-anim">Twenty-two moments.</span>
+                <span className="grad-text-anim">{AGENDA.length} moments.</span>
               </h1>
               <div className="rounded-2xl border border-line bg-surface px-6 py-5 text-left lg:text-right">
                 <div className="font-sub text-[10px] font-bold uppercase tracking-[0.22em] text-ink-soft">
@@ -72,7 +72,7 @@ export default function Agenda() {
               data-testid={`agenda-filter-${f.key}`}
               className={`rounded-full px-5 py-2.5 font-sub text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                 filter === f.key
-                  ? "grad-bg text-white shadow-[0_10px_24px_-14px_rgba(255,45,120,.9)]"
+                  ? "grad-bg text-white shadow-[0_10px_24px_-14px_rgba(124,77,255,.9)]"
                   : "border border-line bg-surface text-ink-soft hover:text-ink"
               }`}
             >
@@ -96,14 +96,14 @@ export default function Agenda() {
                   data-testid={`agenda-row-${i}`}
                   className={`group relative flex gap-4 overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-0.5 md:gap-6 md:p-6 ${
                     isBig
-                      ? "border-transparent bg-ink text-white shadow-[0_20px_44px_-26px_rgba(255,45,120,.8)]"
+                      ? "border-transparent bg-ink text-white shadow-[0_20px_44px_-26px_rgba(124,77,255,.8)]"
                       : "border-line bg-surface hover:shadow-[0_18px_40px_-28px_rgba(23,16,31,.5)]"
                   }`}
                 >
                   {isBig && (
                     <div
                       className="blob -right-10 -top-10 h-44 w-44"
-                      style={{ background: "#FF2D78", opacity: 0.5 }}
+                      style={{ background: "#7C4DFF", opacity: 0.5 }}
                     />
                   )}
 
@@ -163,8 +163,8 @@ export default function Agenda() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="blob left-10 top-0 h-96 w-96" style={{ background: "#A729F5", opacity: 0.45 }} />
-        <div className="blob right-0 bottom-0 h-80 w-80" style={{ background: "#FF7A18", opacity: 0.35 }} />
+        <div className="blob left-10 top-0 h-96 w-96" style={{ background: "#3B4FD8", opacity: 0.45 }} />
+        <div className="blob right-0 bottom-0 h-80 w-80" style={{ background: "#FF8A3D", opacity: 0.35 }} />
         <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28 lg:px-16">
           <Reveal>
             <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">

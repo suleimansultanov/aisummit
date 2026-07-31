@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRight,
@@ -15,41 +14,48 @@ import Reveal from "../components/Reveal";
 import Countdown from "../components/Countdown";
 import Marquee from "../components/Marquee";
 import LogoTile from "../components/LogoTile";
+import Avatar from "../components/Avatar";
 import {
   EVENT,
   ORGANIZERS,
   SPONSORS,
   LECTURES,
   FEATURED_SPEAKERS,
+  SPEAKERS,
   STATS,
-  ASSETS,
 } from "../data/content";
 
 const ACCENTS = {
-  orange: { hex: "#FF7A18", chip: "bg-brand-orange" },
-  pink: { hex: "#FF2D78", chip: "bg-brand-pink" },
-  violet: { hex: "#A729F5", chip: "bg-brand-violet" },
-  cyan: { hex: "#14C8C8", chip: "bg-brand-cyan" },
+  amber: { hex: "#FF8A3D" },
+  violet: { hex: "#7C4DFF" },
+  indigo: { hex: "#3B4FD8" },
+  teal: { hex: "#14B8B8" },
 };
 
-export default function Home() {
-  const [heroImgBroken, setHeroImgBroken] = useState(false);
+// Real portraits used for the hero collage (Michael Wu's cut-out is gone).
+const HERO_FACES = [
+  SPEAKERS.find((s) => s.name.startsWith("Sylvia")),
+  SPEAKERS.find((s) => s.name.startsWith("Hristo")),
+  SPEAKERS.find((s) => s.name.startsWith("Milena")),
+  SPEAKERS.find((s) => s.name.startsWith("Kiril")),
+].filter(Boolean);
 
+export default function Home() {
   return (
     <div data-testid="home-page">
       {/* ------------------------------------------------------------------ */}
       {/* HERO                                                                */}
       {/* ------------------------------------------------------------------ */}
       <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="blob -left-40 -top-20 h-[28rem] w-[28rem]" style={{ background: "#FF7A18" }} />
-        <div className="blob right-0 top-10 h-[30rem] w-[30rem]" style={{ background: "#FF2D78", opacity: 0.35 }} />
-        <div className="blob -bottom-32 left-1/3 h-[26rem] w-[26rem]" style={{ background: "#A729F5", opacity: 0.3 }} />
+        <div className="blob -left-40 -top-20 h-[28rem] w-[28rem]" style={{ background: "#FF8A3D" }} />
+        <div className="blob right-0 top-10 h-[30rem] w-[30rem]" style={{ background: "#7C4DFF", opacity: 0.35 }} />
+        <div className="blob -bottom-32 left-1/3 h-[26rem] w-[26rem]" style={{ background: "#3B4FD8", opacity: 0.3 }} />
         <div className="dot-grid absolute inset-0 opacity-40" />
 
         <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-12 lg:px-16">
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="grad-bg mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_26px_-14px_rgba(255,45,120,.9)]">
+              <div className="grad-bg mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_26px_-14px_rgba(124,77,255,.9)]">
                 <Sparkles size={13} />
                 {EVENT.headline}
               </div>
@@ -74,11 +80,11 @@ export default function Home() {
             <Reveal delay={0.24}>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.14em]">
-                  <CalendarDays size={15} className="text-brand-orange" />
+                  <CalendarDays size={15} className="text-brand-amber" />
                   {EVENT.date}
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.14em]">
-                  <MapPin size={15} className="text-brand-pink" />
+                  <MapPin size={15} className="text-brand-violet" />
                   Sofia · NCE Mechatronics & Clean Technologies
                 </span>
               </div>
@@ -89,7 +95,7 @@ export default function Home() {
                 <Link
                   to="/registration"
                   data-testid="hero-register-btn"
-                  className="group grad-bg inline-flex items-center gap-3 rounded-full px-8 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(255,45,120,.95)] transition-transform duration-300 hover:scale-[1.04]"
+                  className="group grad-bg inline-flex items-center gap-3 rounded-full px-8 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(124,77,255,.95)] transition-transform duration-300 hover:scale-[1.04]"
                 >
                   Reserve your seat
                   <ArrowUpRight
@@ -112,27 +118,33 @@ export default function Home() {
           <div className="relative lg:col-span-5">
             <Reveal delay={0.2}>
               <div className="relative mx-auto max-w-md">
-                <div className="grad-bg absolute -inset-3 rounded-[2.5rem] opacity-25 blur-2xl" />
-                {!heroImgBroken ? (
-                  <img
-                    src={ASSETS.heroSpeaker}
-                    alt="Dr. Michael Wu on stage"
-                    onError={() => setHeroImgBroken(true)}
-                    className="relative w-full object-contain drop-shadow-2xl"
-                  />
-                ) : (
-                  <img
-                    src={ASSETS.michaelWu}
-                    alt="Dr. Michael Wu"
-                    className="relative w-full rounded-[2rem] object-cover shadow-2xl"
-                  />
-                )}
-                <div className="absolute -bottom-4 -left-4 rounded-2xl border border-line bg-surface px-5 py-4 shadow-xl">
-                  <p className="font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-ink-soft">
-                    Keynote
+                <div className="grad-bg absolute -inset-4 rounded-[2.5rem] opacity-20 blur-3xl" />
+
+                {/* Collage of real speakers rather than a single portrait */}
+                <div className="relative grid grid-cols-2 gap-3">
+                  {HERO_FACES.map((s, i) => (
+                    <div
+                      key={s.name}
+                      className={`group overflow-hidden rounded-[1.5rem] bg-surface shadow-[0_20px_46px_-28px_rgba(23,16,31,.55)] ${
+                        i % 2 === 1 ? "translate-y-6" : ""
+                      }`}
+                    >
+                      <Avatar
+                        src={s.image}
+                        name={s.name}
+                        className="photo-pop aspect-[4/5] h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute -bottom-2 -left-5 rounded-2xl border border-line bg-surface px-5 py-4 shadow-xl">
+                  <p className="grad-text font-display text-2xl font-semibold leading-none">
+                    {STATS[0].value} speakers
                   </p>
-                  <p className="font-display text-lg font-semibold">Dr. Michael Wu</p>
-                  <p className="font-body text-xs text-ink-soft">Chief AI Strategist, PROS</p>
+                  <p className="mt-1 font-body text-xs text-ink-soft">
+                    {STATS[1].value} sessions · one day
+                  </p>
                 </div>
               </div>
             </Reveal>
@@ -170,7 +182,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 md:gap-16 md:px-12 md:py-28 lg:px-16">
           <div className="md:col-span-6">
             <Reveal>
-              <p className="mb-5 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-pink">
+              <p className="mb-5 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
                 About the Conference
               </p>
               <h2 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.9rem]">
@@ -190,11 +202,11 @@ export default function Home() {
                         className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white"
                         style={{
                           background: [
-                            "#FF7A18",
-                            "#FF2D78",
-                            "#A729F5",
-                            "#14C8C8",
-                            "#FF2D78",
+                            "#FF8A3D",
+                            "#7C4DFF",
+                            "#3B4FD8",
+                            "#14B8B8",
+                            "#7C4DFF",
                           ][i % 5],
                         }}
                       >
@@ -236,7 +248,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <blockquote className="mt-8 rounded-3xl border-l-4 border-brand-orange bg-bg-deep p-7">
+              <blockquote className="mt-8 rounded-3xl border-l-4 border-brand-amber bg-bg-deep p-7">
                 <p className="font-display text-xl font-medium leading-snug md:text-2xl">
                   “{EVENT.closing}”
                 </p>
@@ -250,32 +262,33 @@ export default function Home() {
       {/* GUEST LECTURES                                                      */}
       {/* ------------------------------------------------------------------ */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="blob -left-20 top-10 h-96 w-96" style={{ background: "#FF7A18", opacity: 0.35 }} />
-        <div className="blob -right-20 bottom-0 h-96 w-96" style={{ background: "#A729F5", opacity: 0.4 }} />
+        <div className="blob -left-20 top-10 h-96 w-96" style={{ background: "#FF8A3D", opacity: 0.35 }} />
+        <div className="blob -right-20 bottom-0 h-96 w-96" style={{ background: "#3B4FD8", opacity: 0.4 }} />
 
         <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28 lg:px-16">
           <Reveal>
             <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
-                <p className="mb-4 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-orange">
-                  Guest Lectures
+                <p className="mb-4 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-amber">
+                  Featured Lectures
                 </p>
                 <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-                  Straight from
+                  Two deep dives,
                   <br />
-                  <span className="grad-text">Silicon Valley</span>
+                  <span className="grad-text">one day</span>
                 </h2>
               </div>
               <p className="max-w-sm font-body text-white/55">
-                Two deep-dive keynotes by Dr. Michael Wu, tracing the journey from
-                large language models to artificial super-intelligence.
+                Two 90-minute keynotes by Prof. Krasen Stefanov, connecting
+                national-scale AI infrastructure to what enterprises can actually
+                build on it.
               </p>
             </div>
           </Reveal>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {LECTURES.map((lec, i) => {
-              const accent = ACCENTS[lec.accent] || ACCENTS.pink;
+              const accent = ACCENTS[lec.accent] || ACCENTS.violet;
               return (
                 <Reveal key={lec.no} delay={i * 0.1}>
                   <div className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-colors duration-500 hover:border-white/25 md:p-10">
@@ -331,7 +344,7 @@ export default function Home() {
           <Reveal>
             <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
-                <p className="mb-4 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
+                <p className="mb-4 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-indigo">
                   The Line-up
                 </p>
                 <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
@@ -343,14 +356,14 @@ export default function Home() {
                 data-testid="home-speakers-link"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-ink px-6 py-3 font-sub text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 hover:bg-ink hover:text-white"
               >
-                All 29 speakers <ArrowRight size={14} />
+                All {STATS[0].value} speakers <ArrowRight size={14} />
               </Link>
             </div>
           </Reveal>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURED_SPEAKERS.map((s, i) => {
-              const accent = ACCENTS[s.accent] || ACCENTS.pink;
+              const accent = ACCENTS[s.accent] || ACCENTS.violet;
               return (
                 <Reveal key={s.name} delay={i * 0.07}>
                   <Link
@@ -359,10 +372,9 @@ export default function Home() {
                     className="group block overflow-hidden rounded-[1.5rem] border border-line bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-28px_rgba(23,16,31,.55)]"
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-bg-deep">
-                      <img
+                      <Avatar
                         src={s.image}
-                        alt={s.name}
-                        loading="lazy"
+                        name={s.name}
                         className="photo-pop h-full w-full object-cover object-top"
                       />
                       <span
@@ -394,7 +406,7 @@ export default function Home() {
       <section className="border-y border-line bg-surface">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 py-16 md:grid-cols-2 md:px-12 md:py-20 lg:px-16">
           <Reveal>
-            <p className="mb-7 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-orange">
+            <p className="mb-7 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-amber">
               Organizers
             </p>
             <div className="grid grid-cols-3 gap-4">
@@ -405,7 +417,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mb-7 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
+            <p className="mb-7 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-indigo">
               Sponsors
             </p>
             <div className="grid grid-cols-3 gap-4">
@@ -424,7 +436,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="px-6 py-20 md:px-12 md:py-28 lg:px-16">
             <Reveal>
-              <p className="mb-5 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-pink">
+              <p className="mb-5 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
                 When & Where
               </p>
               <div className="flex items-end gap-4">
@@ -440,11 +452,11 @@ export default function Home() {
 
               <div className="mt-12 space-y-5">
                 {[
-                  [MapPin, "Venue", EVENT.venue.name, "#FF7A18"],
-                  [MapPin, "City", EVENT.city, "#FF2D78"],
-                  [Phone, "Phone", EVENT.venue.phone, "#A729F5"],
-                  [Mail, "Email", EVENT.venue.email, "#14C8C8"],
-                  [Globe, "Website", EVENT.venue.website, "#FF7A18"],
+                  [MapPin, "Venue", EVENT.venue.name, "#FF8A3D"],
+                  [MapPin, "City", EVENT.city, "#7C4DFF"],
+                  [Phone, "Phone", EVENT.venue.phone, "#3B4FD8"],
+                  [Mail, "Email", EVENT.venue.email, "#14B8B8"],
+                  [Globe, "Website", EVENT.venue.website, "#FF8A3D"],
                 ].map(([Icon, k, v, colour]) => (
                   <div key={k} className="flex items-start gap-4 border-b border-line pb-5">
                     <span
@@ -466,7 +478,7 @@ export default function Home() {
               <Link
                 to="/registration"
                 data-testid="venue-register-link"
-                className="group grad-bg mt-10 inline-flex items-center gap-3 rounded-full px-8 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(255,45,120,.95)] transition-transform duration-300 hover:scale-[1.04]"
+                className="group grad-bg mt-10 inline-flex items-center gap-3 rounded-full px-8 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(124,77,255,.95)] transition-transform duration-300 hover:scale-[1.04]"
               >
                 Register now
                 <ArrowUpRight

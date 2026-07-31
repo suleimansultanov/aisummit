@@ -15,13 +15,13 @@
     --line: #F0DFD2;
 
     /* Brand energy — carried over from the original summit identity */
-    --brand-orange: #FF7A18;
-    --brand-pink: #FF2D78;
-    --brand-violet: #A729F5;
-    --brand-cyan: #14C8C8;
+    --brand-amber: #FF8A3D;
+    --brand-violet: #7C4DFF;
+    --brand-indigo: #3B4FD8;
+    --brand-teal: #14B8B8;
 
-    --brand-gradient: linear-gradient(100deg, #FF7A18 0%, #FF2D78 52%, #A729F5 100%);
-    --brand-gradient-soft: linear-gradient(100deg, rgba(255, 122, 24, .14) 0%, rgba(255, 45, 120, .14) 52%, rgba(167, 41, 245, .14) 100%);
+    --brand-gradient: linear-gradient(100deg, #FF8A3D 0%, #7C4DFF 52%, #3B4FD8 100%);
+    --brand-gradient-soft: linear-gradient(100deg, rgba(255,138,61,.14) 0%, rgba(124,77,255,.14) 52%, rgba(59,79,216,.14) 100%);
 }
 
 html {
@@ -39,7 +39,7 @@ body {
 }
 
 ::selection {
-    background: var(--brand-pink);
+    background: var(--brand-violet);
     color: #fff;
 }
 
@@ -87,7 +87,7 @@ body {
 
 /* Animated gradient for the hero word */
 .grad-text-anim {
-    background-image: linear-gradient(100deg, #FF7A18, #FF2D78, #A729F5, #FF2D78, #FF7A18);
+    background-image: linear-gradient(100deg, #FF8A3D, #7C4DFF, #3B4FD8, #7C4DFF, #FF8A3D);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -126,7 +126,7 @@ body {
 
 /* Subtle dot grid texture */
 .dot-grid {
-    background-image: radial-gradient(rgba(23, 16, 31, .11) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(23,16,31,.11) 1px, transparent 1px);
     background-size: 22px 22px;
 }
 

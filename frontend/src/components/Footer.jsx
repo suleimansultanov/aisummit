@@ -9,8 +9,8 @@ export const Footer = () => {
   return (
     <footer data-testid="site-footer" className="relative overflow-hidden bg-ink text-white">
       {/* colour glow so the footer doesn't read as a flat black slab */}
-      <div className="blob -left-32 -top-24 h-80 w-80" style={{ background: "#FF7A18" }} />
-      <div className="blob -right-24 bottom-0 h-96 w-96" style={{ background: "#A729F5" }} />
+      <div className="blob -left-32 -top-24 h-80 w-80" style={{ background: "#FF8A3D" }} />
+      <div className="blob -right-24 bottom-0 h-96 w-96" style={{ background: "#3B4FD8" }} />
 
       <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-24 lg:px-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -73,15 +73,15 @@ export const Footer = () => {
                 href={`mailto:${EVENT.venue.email}`}
                 className="flex items-center gap-3 transition-colors hover:text-white"
               >
-                <Mail size={16} className="shrink-0 text-brand-pink" />
+                <Mail size={16} className="shrink-0 text-brand-violet" />
                 {EVENT.venue.email}
               </a>
               <p className="flex items-center gap-3">
-                <Phone size={16} className="shrink-0 text-brand-orange" />
+                <Phone size={16} className="shrink-0 text-brand-amber" />
                 {EVENT.venue.phone}
               </p>
               <p className="flex items-start gap-3 leading-relaxed">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-brand-violet" />
+                <MapPin size={16} className="mt-0.5 shrink-0 text-brand-indigo" />
                 <span>
                   {EVENT.venue.name}, {EVENT.city}
                 </span>

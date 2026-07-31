@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Reveal from "../components/Reveal";
 import Marquee from "../components/Marquee";
-import { EVENT } from "../data/content";
+import { EVENT, STATS } from "../data/content";
 
 // ---------------------------------------------------------------------------
 // ⚠️  REPLACE THIS with the client's own form endpoint.
@@ -33,7 +33,7 @@ const TICKETS = [
     name: "Standard Pass",
     price: "Free",
     note: "Registration required",
-    colour: "#FF7A18",
+    colour: "#FF8A3D",
     perks: ["Full-day access", "All keynotes & sessions", "Coffee breaks & lunch"],
   },
   {
@@ -41,7 +41,7 @@ const TICKETS = [
     name: "VIP Pass",
     price: "On request",
     note: "Limited seats",
-    colour: "#FF2D78",
+    colour: "#7C4DFF",
     featured: true,
     perks: [
       "Everything in Standard",
@@ -55,7 +55,7 @@ const TICKETS = [
     name: "Partner / Press",
     price: "By invitation",
     note: "Accreditation needed",
-    colour: "#A729F5",
+    colour: "#3B4FD8",
     perks: ["Full-day access", "Media & partner lounge", "Interview slots on request"],
   },
 ];
@@ -71,7 +71,7 @@ const INTERESTS = [
 
 // Shared input styling
 const INPUT_BASE =
-  "w-full rounded-xl border bg-surface px-4 py-3.5 font-body text-[15px] outline-none transition-all duration-200 placeholder:text-ink-soft/50 focus:border-brand-pink focus:ring-4 focus:ring-brand-pink/15";
+  "w-full rounded-xl border bg-surface px-4 py-3.5 font-body text-[15px] outline-none transition-all duration-200 placeholder:text-ink-soft/50 focus:border-brand-violet focus:ring-4 focus:ring-brand-violet/15";
 
 // Defined at module scope on purpose: declaring this inside the page component
 // would remount every input on each keystroke and blow away focus.
@@ -81,7 +81,7 @@ const Field = ({ label, name, type, placeholder, required, half, value, error, o
       htmlFor={name}
       className="mb-2 block font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-ink-soft"
     >
-      {label} {required && <span className="text-brand-pink">*</span>}
+      {label} {required && <span className="text-brand-violet">*</span>}
     </label>
     <input
       id={name}
@@ -184,12 +184,12 @@ export default function Registration() {
     return (
       <div data-testid="registration-page" className="pt-[100px]">
         <section className="relative overflow-hidden">
-          <div className="blob -left-24 top-0 h-96 w-96" style={{ background: "#FF7A18" }} />
-          <div className="blob right-0 top-20 h-96 w-96" style={{ background: "#A729F5", opacity: 0.4 }} />
+          <div className="blob -left-24 top-0 h-96 w-96" style={{ background: "#FF8A3D" }} />
+          <div className="blob right-0 top-20 h-96 w-96" style={{ background: "#3B4FD8", opacity: 0.4 }} />
           <div className="relative mx-auto max-w-2xl px-6 py-24 text-center md:py-32">
             <div
               data-testid="registration-success"
-              className="grad-bg mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full text-white shadow-[0_18px_40px_-18px_rgba(255,45,120,.95)]"
+              className="grad-bg mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full text-white shadow-[0_18px_40px_-18px_rgba(124,77,255,.95)]"
             >
               <Check size={38} strokeWidth={3} />
             </div>
@@ -205,11 +205,11 @@ export default function Registration() {
 
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.14em]">
-                <CalendarDays size={15} className="text-brand-orange" />
+                <CalendarDays size={15} className="text-brand-amber" />
                 {EVENT.date}
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.14em]">
-                <MapPin size={15} className="text-brand-pink" />
+                <MapPin size={15} className="text-brand-violet" />
                 {EVENT.city}
               </span>
             </div>
@@ -259,8 +259,8 @@ export default function Registration() {
     <div data-testid="registration-page" className="pt-[100px]">
       {/* HEADER */}
       <section className="relative overflow-hidden">
-        <div className="blob -left-32 -top-16 h-96 w-96" style={{ background: "#FF2D78" }} />
-        <div className="blob right-0 top-0 h-96 w-96" style={{ background: "#FF7A18", opacity: 0.4 }} />
+        <div className="blob -left-32 -top-16 h-96 w-96" style={{ background: "#7C4DFF" }} />
+        <div className="blob right-0 top-0 h-96 w-96" style={{ background: "#FF8A3D", opacity: 0.4 }} />
         <div className="dot-grid absolute inset-0 opacity-40" />
         <div className="relative mx-auto max-w-[1400px] px-6 pb-12 pt-16 md:px-12 md:pt-20 lg:px-16">
           <Reveal>
@@ -275,7 +275,7 @@ export default function Registration() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-7 max-w-xl font-body text-lg text-ink-soft">
-              One day, 29 speakers, two Silicon Valley keynotes. Fill in the form
+              One day, {STATS[0].value} speakers, two featured keynotes. Fill in the form
               below and we'll send your confirmation and venue details by email.
             </p>
           </Reveal>
@@ -288,7 +288,7 @@ export default function Registration() {
       <section className="bg-bg-deep">
         <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-12 md:py-20 lg:px-16">
           <Reveal>
-            <p className="mb-8 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
+            <p className="mb-8 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-indigo">
               Choose your pass
             </p>
           </Reveal>
@@ -303,7 +303,7 @@ export default function Registration() {
                     data-testid={`ticket-${t.id}`}
                     className={`relative flex h-full w-full flex-col overflow-hidden rounded-[1.5rem] border-2 bg-surface p-7 text-left transition-all duration-300 hover:-translate-y-1 ${
                       selected
-                        ? "border-transparent shadow-[0_24px_54px_-28px_rgba(255,45,120,.75)]"
+                        ? "border-transparent shadow-[0_24px_54px_-28px_rgba(124,77,255,.75)]"
                         : "border-line hover:border-ink/20"
                     }`}
                   >
@@ -371,7 +371,7 @@ export default function Registration() {
                   Your details
                 </h2>
                 <p className="mt-3 font-body text-ink-soft">
-                  Fields marked <span className="text-brand-pink">*</span> are required.
+                  Fields marked <span className="text-brand-violet">*</span> are required.
                 </p>
 
                 <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -399,7 +399,7 @@ export default function Registration() {
                           data-testid={`reg-interest-${topic.slice(0, 8).replace(/\s/g, "-").toLowerCase()}`}
                           className={`rounded-full px-4 py-2.5 font-sub text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-200 ${
                             on
-                              ? "grad-bg text-white shadow-[0_10px_22px_-14px_rgba(255,45,120,.9)]"
+                              ? "grad-bg text-white shadow-[0_10px_22px_-14px_rgba(124,77,255,.9)]"
                               : "border border-line bg-surface text-ink-soft hover:text-ink"
                           }`}
                         >
@@ -473,7 +473,7 @@ export default function Registration() {
                     <span className="font-body text-sm leading-relaxed text-ink-soft">
                       I agree that my details may be used to process my registration
                       and to send me information about the {EVENT.name}.{" "}
-                      <span className="text-brand-pink">*</span>
+                      <span className="text-brand-violet">*</span>
                     </span>
                   </label>
                   {errors.consent && (
@@ -498,7 +498,7 @@ export default function Registration() {
                   type="submit"
                   disabled={status === "sending"}
                   data-testid="registration-submit"
-                  className="group grad-bg mt-9 inline-flex items-center gap-3 rounded-full px-9 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(255,45,120,.95)] transition-transform duration-300 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="group grad-bg mt-9 inline-flex items-center gap-3 rounded-full px-9 py-4 font-sub text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_16px_36px_-16px_rgba(124,77,255,.95)] transition-transform duration-300 hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "sending" ? (
                     <>
@@ -563,13 +563,13 @@ export default function Registration() {
                   <div className="mt-5 space-y-3">
                     <a
                       href={`mailto:${EVENT.venue.email}`}
-                      className="flex items-center gap-3 font-body text-sm transition-colors hover:text-brand-pink"
+                      className="flex items-center gap-3 font-body text-sm transition-colors hover:text-brand-violet"
                     >
-                      <Mail size={16} className="text-brand-pink" />
+                      <Mail size={16} className="text-brand-violet" />
                       {EVENT.venue.email}
                     </a>
                     <p className="flex items-center gap-3 font-body text-sm">
-                      <Phone size={16} className="text-brand-orange" />
+                      <Phone size={16} className="text-brand-amber" />
                       {EVENT.venue.phone}
                     </p>
                   </div>

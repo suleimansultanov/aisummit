@@ -80,7 +80,7 @@ export const Navbar = () => {
             <Link
               to="/registration"
               data-testid="nav-registration-btn"
-              className="group grad-bg inline-flex items-center gap-2 rounded-full px-6 py-3 font-sub text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_10px_26px_-12px_rgba(255,45,120,.9)] transition-transform duration-300 hover:scale-[1.04]"
+              className="group grad-bg inline-flex items-center gap-2 rounded-full px-6 py-3 font-sub text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_10px_26px_-12px_rgba(124,77,255,.9)] transition-transform duration-300 hover:scale-[1.04]"
             >
               Register
               <ArrowUpRight

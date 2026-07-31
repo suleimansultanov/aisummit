@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Linkedin, X } from "lucide-react";
 import Reveal from "../components/Reveal";
 import Marquee from "../components/Marquee";
-import { FEATURED_SPEAKERS, SPEAKERS, EVENT } from "../data/content";
+import Avatar from "../components/Avatar";
+import { FEATURED_SPEAKERS, SPEAKERS, ALL_SPEAKERS, EVENT } from "../data/content";
 
 const ACCENTS = {
-  orange: "#FF7A18",
-  pink: "#FF2D78",
-  violet: "#A729F5",
-  cyan: "#14C8C8",
+  amber: "#FF8A3D",
+  violet: "#7C4DFF",
+  indigo: "#3B4FD8",
+  teal: "#14B8B8",
 };
 
-const RING = ["#FF7A18", "#FF2D78", "#A729F5", "#14C8C8"];
+const RING = ["#FF8A3D", "#7C4DFF", "#3B4FD8", "#14B8B8"];
 
 export default function Speakers() {
   const [active, setActive] = useState(null);
@@ -21,13 +22,13 @@ export default function Speakers() {
     <div data-testid="speakers-page" className="pt-[100px]">
       {/* HEADER */}
       <section className="relative overflow-hidden">
-        <div className="blob -left-32 -top-20 h-96 w-96" style={{ background: "#FF2D78" }} />
-        <div className="blob right-0 top-0 h-96 w-96" style={{ background: "#A729F5", opacity: 0.35 }} />
+        <div className="blob -left-32 -top-20 h-96 w-96" style={{ background: "#7C4DFF" }} />
+        <div className="blob right-0 top-0 h-96 w-96" style={{ background: "#3B4FD8", opacity: 0.35 }} />
         <div className="dot-grid absolute inset-0 opacity-40" />
 
         <div className="relative mx-auto max-w-[1400px] px-6 pb-14 pt-16 md:px-12 md:pt-20 lg:px-16">
           <Reveal>
-            <p className="mb-6 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-pink">
+            <p className="mb-6 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
               The Line-up · {EVENT.date}
             </p>
           </Reveal>
@@ -41,7 +42,7 @@ export default function Speakers() {
           <Reveal delay={0.16}>
             <p className="mt-7 max-w-xl font-body text-lg text-ink-soft">
               Scholars, founders, clinicians and academic leaders from across Europe
-              and Silicon Valley — gathered in Sofia for one day.
+              and beyond — gathered in Sofia for one day.
             </p>
           </Reveal>
         </div>
@@ -53,14 +54,14 @@ export default function Speakers() {
       <section className="bg-bg-deep">
         <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 md:py-24 lg:px-16">
           <Reveal>
-            <p className="mb-10 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-violet">
+            <p className="mb-10 font-sub text-[11px] font-bold uppercase tracking-[0.26em] text-brand-indigo">
               Featured Speakers
             </p>
           </Reveal>
 
           <div className="space-y-16 md:space-y-24">
             {FEATURED_SPEAKERS.map((s, i) => {
-              const colour = ACCENTS[s.accent] || ACCENTS.pink;
+              const colour = ACCENTS[s.accent] || ACCENTS.violet;
               return (
                 <Reveal key={s.name} delay={0.05}>
                   <article
@@ -76,10 +77,9 @@ export default function Speakers() {
                           style={{ background: colour }}
                         />
                         <div className="aspect-[4/5] overflow-hidden">
-                          <img
+                          <Avatar
                             src={s.image}
-                            alt={s.name}
-                            loading="lazy"
+                            name={s.name}
                             className="photo-pop h-full w-full object-cover object-top"
                           />
                         </div>
@@ -134,7 +134,7 @@ export default function Speakers() {
                 The full <span className="grad-text">2025 line-up</span>
               </h2>
               <p className="font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-ink-soft">
-                {SPEAKERS.length + FEATURED_SPEAKERS.length} speakers · tap a card for the bio
+                {ALL_SPEAKERS.length} speakers · tap a card for the bio
               </p>
             </div>
           </Reveal>
@@ -149,10 +149,9 @@ export default function Speakers() {
                   className="group block w-full overflow-hidden rounded-[1.25rem] border border-line bg-surface text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-28px_rgba(23,16,31,.55)]"
                 >
                   <div className="relative aspect-square overflow-hidden bg-bg-deep">
-                    <img
+                    <Avatar
                       src={s.image}
-                      alt={s.name}
-                      loading="lazy"
+                      name={s.name}
                       className="photo-pop h-full w-full object-cover object-top"
                     />
                     <div
@@ -195,9 +194,9 @@ export default function Speakers() {
               <X size={17} />
             </button>
             <div className="flex flex-col gap-6 sm:flex-row">
-              <img
+              <Avatar
                 src={active.image}
-                alt={active.name}
+                name={active.name}
                 className="h-32 w-32 shrink-0 rounded-2xl object-cover object-top"
               />
               <div>
@@ -226,8 +225,8 @@ export default function Speakers() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="blob left-1/4 top-0 h-96 w-96" style={{ background: "#FF2D78", opacity: 0.45 }} />
-        <div className="blob right-10 bottom-0 h-80 w-80" style={{ background: "#FF7A18", opacity: 0.35 }} />
+        <div className="blob left-1/4 top-0 h-96 w-96" style={{ background: "#7C4DFF", opacity: 0.45 }} />
+        <div className="blob right-10 bottom-0 h-80 w-80" style={{ background: "#FF8A3D", opacity: 0.35 }} />
         <div className="relative mx-auto max-w-[1400px] px-6 py-20 text-center md:px-12 md:py-28 lg:px-16">
           <Reveal>
             <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">

@@ -12,10 +12,11 @@ const OLD_SITE = "https://pros.innobiz1.com";
 export const ASSETS = {
   logo: `${OLD_SITE}/img/logo.png`,
   logoFooter: `${OLD_SITE}/img/footer-logo.png`,
-  heroSpeaker: `${OLD_SITE}/img/hero-right.png`,
-  michaelWu: `${OLD_SITE}/img/speakers/speaker-1.jpg`,
   member: (n) => `${OLD_SITE}/img/team-member/member-${n}.jpg`,
   imiLogo: `${OLD_SITE}/imi_logo.png`,
+  // Save the Sofia University crest here and the sponsor tile picks it up
+  // automatically. Until then it renders as a styled wordmark.
+  suLogo: `${process.env.PUBLIC_URL || ""}/img/logos/sofia-university.png`,
 };
 
 export const EVENT = {
@@ -52,14 +53,6 @@ export const EVENT = {
   },
 };
 
-// Headline numbers for the stats strip
-export const STATS = [
-  { value: "29", label: "Speakers" },
-  { value: "20+", label: "Sessions" },
-  { value: "2", label: "Silicon Valley keynotes" },
-  { value: "1", label: "Day in Sofia" },
-];
-
 // Topic strip that scrolls across the page — pure energy, zero content risk.
 export const TOPICS = [
   "Large Language Models",
@@ -89,54 +82,58 @@ export const ORGANIZERS = [
     url: "https://www.bas.bg/",
     logo: ASSETS.imiLogo,
   },
-  { name: "PROS", full: "PROS Holdings (NYSE: PRO)", url: "https://pros.com/", logo: null },
   { name: "VirTech", full: "Virtech", url: "https://virtech.bg/", logo: null },
 ];
 
 export const SPONSORS = [
+  {
+    name: "Sofia University",
+    full: 'Sofia University "St. Kliment Ohridski" — Faculty of Mathematics and Informatics',
+    url: "https://www.fmi.uni-sofia.bg/en",
+    logo: ASSETS.suLogo,
+  },
   {
     name: "TU-Sofia",
     full: "National Center of Excellence of Mechatronics and Clean Technologies",
     url: "https://tu-sofia.bg/",
     logo: null,
   },
-  {
-    name: "iNNOBIZ1",
-    full: "iNNOBIZ1 Swiss-Global Ecosystem",
-    url: "https://innobiz1.com/",
-    logo: null,
-  },
   { name: "VirTech", full: "Virtech", url: "https://virtech.bg/", logo: null },
 ];
 
 // ---------------------------------------------------------------------------
-// Guest lectures from the Silicon Valley AI expert
+// Featured lectures.
+//
+// ⚠️  TITLES AND ABSTRACTS BELOW ARE DRAFTS written from Prof. Stefanov's
+// published research areas (UNITe Centre of Excellence — Big Data, AI and HPC;
+// technology-enhanced learning). They are NOT confirmed talks. Replace with the
+// real titles/abstracts once he supplies them.
 // ---------------------------------------------------------------------------
 export const LECTURES = [
   {
     no: "01",
-    speaker: "Dr. Michael Wu",
+    speaker: "Prof. Krasen Stefanov, PhD",
     time: "09:00",
     length: "~ 90 min",
-    accent: "orange",
-    title: "Mastering LLMs Within the Enterprise: From Theory to Practice",
+    accent: "amber",
+    title:
+      "Big Data, AI and High-Performance Computing for the Intelligent Enterprise",
     focus:
-      "Lecture 1 focuses on our current understanding of how LLMs work and its application within a business enterprise.",
+      "Lecture 1 looks at how national-scale research infrastructure translates into practical AI capability for business.",
     body:
-      "AI tools, such as LLMs, are quickly becoming a standard within a company's tech stack. Yet, many are still experimenting with their use cases as best practices that stand the test of time need time to develop. Therefore, innovative leaders must grasp the inner workings of these AI tools to outpace competitors and seize the enormous first-mover advantages. This session will provide you with a deep understanding of LLM, how it works, and how to use it safely and productively inside an enterprise. Moreover, we will examine several categories of internal GenAI use cases, ranging from creative marketing use cases to technical engineering and IT applications.",
+      "Bulgaria now hosts serious compute and data infrastructure through the UNITe Centre of Excellence and the wider European HPC landscape. This session explains what that infrastructure actually makes possible for an enterprise: where large-scale data processing and model training genuinely change what a company can attempt, and where they do not. We will look at how organisations gain access to these resources, how academic and industrial partnerships are structured in practice, and what a realistic first project looks like for a company beginning to build AI capability on top of shared national infrastructure.",
   },
   {
     no: "02",
-    speaker: "Dr. Michael Wu",
+    speaker: "Prof. Krasen Stefanov, PhD",
     time: "14:00",
     length: "~ 90 min",
-    accent: "violet",
-    title:
-      "The Agentic Era: The Bridge from Dumb LLMs to Artificial Super-Intelligence",
+    accent: "indigo",
+    title: "From Models to Competence: AI, Learning and the Adaptive Organisation",
     focus:
-      "Lecture 2 focuses on the path from LLM to Agents, and how we achieve AGI/ASI and their greater societal impacts.",
+      "Lecture 2 focuses on competency-based approaches and technology-enhanced learning as AI reshapes the workforce.",
     body:
-      "Today's LLMs are smart enough to tell you how to perform virtually any imaginable task, yet they can't execute them. This session will show you the ingredients and how to transform dumb LLMs into smart agents capable of autonomously achieving your goals. Although intelligent agents capable of deep reasoning are crucial for problem-solving, they are only the first step towards artificial general intelligence (AGI). We'll explore the blueprint to AGI and examine a new scaling law that drives exponential knowledge generation. Finally, we will get a glimpse of how we'll reach artificial super-intelligence (ASI) post AGI.",
+      "Adopting AI is far less a tooling problem than an organisational learning problem. Drawing on two decades of research in technology-enhanced learning and competency-based education, this session examines how enterprises can map the competences they actually need, use AI systems to close the gaps, and build the internal feedback loops that keep pace with the technology. We will cover competence modelling, the role of intelligent tutoring and recommendation systems inside organisations, and what European research projects have learned about making these approaches work at scale.",
   },
 ];
 
@@ -145,40 +142,32 @@ export const LECTURES = [
 // ---------------------------------------------------------------------------
 export const FEATURED_SPEAKERS = [
   {
-    name: "Dr. Michael Wu",
-    role: "Chief AI Strategist, PROS (NYSE: PRO)",
-    tag: "Silicon Valley Keynote",
-    accent: "pink",
-    image: ASSETS.michaelWu,
-    linkedin: "https://www.linkedin.com/in/michaelwuphd/",
+    name: "Prof. Krasen Stefanov, PhD",
+    role: 'Head of Department of Information Technologies · Sofia University "St. Kliment Ohridski"',
+    tag: "Featured Keynote",
+    accent: "violet",
+    // No official portrait available yet — the Avatar component falls back to
+    // gradient initials until one is supplied.
+    image: null,
+    linkedin: "https://www.fmi.uni-sofia.bg/en/faculty/krasen-stefanov-stefanov",
     bio:
-      "Dr. Michael Wu is currently the Chief AI Strategist at PROS (NYSE: PRO), an AI-powered SaaS provider that helps companies monetize more efficiently in the digital economy. He's been appointed as a Senior Research Fellow at the Ecole des Ponts Business School for his work in Data Science, and he serves as an advisor and a lecturer for UC Berkeley Extension's AI programs. Prior to PROS, Michael was the Chief Scientist at Lithium for a decade, developing predictive and prescriptive algorithms to extract insights from social media big data. His R&D won him recognition as an Influential Leader by CRM Magazine alongside Mark Zuckerberg and Marc Benioff. Michael served as a DOE fellow at Los Alamos National Lab, holds a triple major in Applied Math, Physics and Molecular & Cell Biology, and a Ph.D. from UC Berkeley's Biophysics program.",
+      'Krasen Stefanov is Professor and Head of the Department of Information Technologies at the Faculty of Mathematics and Informatics, Sofia University "St. Kliment Ohridski", where he also heads the Information Services Laboratory. He is the coordinator and director of UNITe — the Centre of Excellence for Big Data, Artificial Intelligence and High-Performance Computing, whose new research complex opened at the Lozenets Campus in December 2023. His research spans big data, artificial intelligence, high-performance computing, the Internet of Things, competency-based education and technology-enhanced learning, and he has led and contributed to a long series of European and national research projects across e-learning systems, knowledge management and digital libraries.',
   },
   {
     name: "Alexander I. Iliev, PhD",
     role: "Academic Head of Big Data & AI, SRH Berlin · Lead Lecturer, UC Berkeley",
     tag: "Official Opening",
-    accent: "orange",
+    accent: "amber",
     image: ASSETS.member(2),
     linkedin: "https://www.linkedin.com/in/ailiev/",
     bio:
       "Alex is an eminent scholar in the fields of AI/ML, Smart Systems, Signal Processing, and Emotion Recognition. He is affiliated with the Institute of Mathematics and Informatics (Bulgarian Academy of Sciences), the Center of Excellence in Informatics and ICT, SRH Berlin University as Academic Head of Big Data and AI, University of California Berkeley as a Lead Lecturer, University of Miami, and University of Wisconsin Stevens Point. He is a Co-Founder of Innovatia Valley, a Digital Innovation Hub, and was previously Product Manager for Gracenote and a consultant for Labcyte and Stealth Media Labs. Dr. Iliev has been involved in Horizon Europe HealthyW8, H2020 BOWI, ACTIVAGE, Cross4Health, EIT Climate KIC TRANSFORM and WE-TRANSFORM.",
   },
   {
-    name: "Prof. Dr. Eng. Georgi Todorov",
-    role: "Dean, Faculty of Industrial Technology · TU-Sofia",
-    tag: "Host Institution",
-    accent: "violet",
-    image: ASSETS.member(9),
-    linkedin: "https://www.researchgate.net/profile/Georgi-Todorov-2",
-    bio:
-      "Georgi is a prominent Bulgarian engineer and academic leader. He holds master's degrees in Mechanical Engineering and Applied Mathematics from the Technical University of Sofia, where he is now Professor and Doctor of Science. Over his career he served as Deputy Dean (2008–2010), Dean of the Faculty of Mechanical Engineering and Technology (2010–2019), Deputy Dean for Research & International Integration (2019–2022) and, since 2022, Dean of the Faculty of Industrial Technology. He also heads a Centre of Excellence at TU-Sofia, is a Member of the Managing Board of the Bulgarian Industrial Association and Chairman of the General Assembly of TU-Sofia. He holds 7 international patents plus 19 registered in Bulgaria.",
-  },
-  {
     name: "Roumen Nikolov, PhD",
     role: "CEO of Virtech · Former UNESCO Chairholder",
     tag: "Panel Moderator",
-    accent: "cyan",
+    accent: "teal",
     image: ASSETS.member(19),
     linkedin: "https://www.linkedin.com/in/roumen-nikolov-382942/",
     bio:
@@ -401,17 +390,11 @@ export const AGENDA = [
   {
     time: "09:00",
     kind: "keynote",
-    title: "Mastering LLMs Within the Enterprise: From Theory to Practice",
-    speakers: "Michael Wu",
+    title:
+      "Big Data, AI and High-Performance Computing for the Intelligent Enterprise",
+    speakers: "Krasen Stefanov",
   },
   { time: "10:30", kind: "admin", title: "Q&A", speakers: "" },
-  {
-    time: "10:45",
-    kind: "talk",
-    title:
-      "AI-Powered Innovation in Mechatronics & Clean Technologies at CoE Mechatronics & Clean Technologies",
-    speakers: "Georgi Todorov",
-  },
   { time: "11:00", kind: "break", title: "Coffee Break", speakers: "" },
   {
     time: "11:15",
@@ -476,9 +459,8 @@ export const AGENDA = [
   {
     time: "14:00",
     kind: "keynote",
-    title:
-      "The Agentic Era: The Bridge from Dumb LLMs to Artificial Super-Intelligence",
-    speakers: "Michael Wu",
+    title: "From Models to Competence: AI, Learning and the Adaptive Organisation",
+    speakers: "Krasen Stefanov",
   },
   { time: "15:30", kind: "admin", title: "Q&A", speakers: "" },
   { time: "15:45", kind: "break", title: "Coffee Break", speakers: "" },
@@ -495,6 +477,18 @@ export const AGENDA = [
     speakers: "Moderator: Roumen Nikolov",
   },
   { time: "17:45", kind: "admin", title: "Closing Session", speakers: "" },
+];
+
+// Headline numbers for the stats strip — derived, so they can never drift out
+// of sync when speakers or agenda rows are added/removed.
+export const STATS = [
+  { value: String(ALL_SPEAKERS.length), label: "Speakers" },
+  {
+    value: `${AGENDA.filter((a) => ["talk", "keynote", "panel"].includes(a.kind)).length}`,
+    label: "Sessions",
+  },
+  { value: String(LECTURES.length), label: "Featured keynotes" },
+  { value: "1", label: "Day in Sofia" },
 ];
 
 export const NAV_LINKS = [

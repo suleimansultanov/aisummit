@@ -17,7 +17,7 @@ export const LogoTile = ({ item, testId }) => {
       rel="noreferrer"
       title={item.full}
       data-testid={testId}
-      className="group relative flex h-24 items-center justify-center rounded-2xl border border-line bg-surface px-6 transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_14px_40px_-16px_rgba(255,45,120,.45)]"
+      className="group relative flex h-24 items-center justify-center rounded-2xl border border-line bg-surface px-6 transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_14px_40px_-16px_rgba(124,77,255,.45)]"
     >
       <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 grad-bg" style={{ padding: 2, WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
       {showImage ? (
